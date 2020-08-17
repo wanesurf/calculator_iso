@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var numberOnScreeen:Double = 0;
     var result:Double?
     var operation:String?
-    var lastNumber:Int?
+    var lastNumber:String = ""
     @IBOutlet weak var label: UILabel!
     
     
@@ -29,9 +29,35 @@ class ViewController: UIViewController {
         self.numberOnScreeen = Double(label.text!)!
         }
         
-        lastNumber = sender.tag-1
+        self.lastNumber = String(lastNumber)+String(sender.tag-1)
     }
     
+    
+    @IBAction func minus(_ sender: UIButton) {
+        
+        label.text = "-"
+        operation = "-"
+        performingMath = true
+        lastNumber = ""
+    }
+    
+  
+    @IBAction func plus(_ sender: UIButton) {
+        
+        label.text = "+"
+        operation = "+"
+        performingMath = true
+        lastNumber = ""
+    }
+    
+    
+    @IBAction func divide(_ sender: UIButton) {
+        
+        label.text = "/"
+        operation = "/"
+        performingMath = true
+        lastNumber = ""
+    }
     
     //Interacting with *
     @IBAction func multiply(_ sender: UIButton) {
@@ -39,6 +65,7 @@ class ViewController: UIViewController {
         label.text = "x"
         operation = "x"
         performingMath = true
+        lastNumber = ""
         
       
         
@@ -49,13 +76,13 @@ class ViewController: UIViewController {
         
         switch operation {
         case "x":
-            result = Double(lastNumber!)*numberOnScreeen
+            result = Double(lastNumber)!*numberOnScreeen
         case "+":
-            result=Double(lastNumber!)+numberOnScreeen
+            result = Double(lastNumber)!+numberOnScreeen
         case "-":
-            result=Double(lastNumber!)-numberOnScreeen
+            result=Double(lastNumber)!-numberOnScreeen
         case "/":
-            result=Double(lastNumber!)/numberOnScreeen
+            result=Double(lastNumber)!/numberOnScreeen
         default:result = 0
             
         }
@@ -69,7 +96,7 @@ class ViewController: UIViewController {
     
     @IBAction func clear(_ sender: UIButton) {
         numberOnScreeen = 0
-        lastNumber = 0
+        lastNumber = ""
         operation=""
         label.text=""
         

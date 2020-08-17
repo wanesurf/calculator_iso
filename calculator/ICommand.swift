@@ -18,8 +18,9 @@ class ICommand {
     
 }
 
-class CommandMultiply : ICommand{
+class CommandMultiply:ICommand{
   
+    
 }
 
 
